@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventEase | Event Management</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <div>
+            <p class="eyebrow">EVENT MANAGEMENT SYSTEM</p>
+            <h1>EventEase <span>✦</span></h1>
+            <p class="subtitle">Plan events. Manage people. Make it happen.</p>
+        </div>
+        <div class="header-tag">Admin Dashboard</div>
+    </header>
+
+    <main class="container">
+        <section class="stats">
+            <article class="stat-card">
+                <span>Total Events</span>
+                <strong id="totalEvents">0</strong>
+                <small>Events in your system</small>
+            </article>
+            <article class="stat-card">
+                <span>Total Registrations</span>
+                <strong id="totalAttendees">0</strong>
+                <small>Registered attendees</small>
+            </article>
+        </section>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">GET STARTED</p>
+                    <h2 id="eventFormTitle">Create an Event</h2>
+                </div>
+                <span class="section-icon">✧</span>
+            </div>
+
+            <form id="eventForm" class="form-grid">
+                <input type="hidden" id="eventId">
+
+                <label>
+                    Event Name *
+                    <input id="eventName" type="text" maxlength="100"
+                        placeholder="e.g. TechFest 2026" required>
+                </label>
+
+                <label>
+                    Event Date *
+                    <input id="eventDate" type="date" required>
+                </label>
+
+                <label>
+                    Venue *
+                    <input id="eventVenue" type="text" maxlength="150"
+                        placeholder="e.g. Main Auditorium" required>
+                </label>
+
+                <label>
+                    Description
+                    <input id="eventDescription" type="text" maxlength="500"
+                        placeholder="A short description">
+                </label>
+
+                <div class="form-actions">
+                    <button class="btn primary" id="saveEventButton" type="submit">
+                        + Create Event
+                    </button>
+                    <button class="btn secondary hidden" id="cancelEdit"
+                        type="button">Cancel Edit</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR CALENDAR</p>
+                    <h2>Events</h2>
+                </div>
+                <input id="eventSearch" class="search-input"
+                    placeholder="Search events or venues...">
+            </div>
+
+            <div id="eventList" class="event-grid">
+                <p class="muted">Loading events...</p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">PEOPLE MANAGEMENT</p>
+                    <h2>Register an Attendee</h2>
+                </div>
+                <span class="section-icon">◎</span>
+            </div>
+
+            <form id="attendeeForm" class="form-grid">
+                <label>
+                    Select Event *
+                    <select id="attendeeEvent" required>
+                        <option value="">Choose an event</option>
+                    </select>
+                </label>
+
+                <label>
+                    Attendee Name *
+                    <input id="attendeeName" type="text" maxlength="100"
+                        placeholder="Full name" required>
+                </label>
+
+                <label>
+                    Email Address *
+                    <input id="attendeeEmail" type="email" maxlength="254"
+                        placeholder="name@example.com" required>
+                </label>
+
+                <label>
+                    Ticket Type *
+                    <select id="ticketType" required>
+                        <option value="General">General</option>
+                        <option value="Student">Student</option>
+                        <option value="VIP">VIP</option>
+                    </select>
+                </label>
+
+                <div class="form-actions">
+                    <button class="btn primary" type="submit">
+                        Register Attendee
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">REGISTRATION RECORDS</p>
+                    <h2>Attendees</h2>
+                </div>
+                <input id="attendeeSearch" class="search-input"
+                    placeholder="Search name, email or event...">
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Event</th>
+                            <th>Date</th>
+                            <th>Ticket</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendeeTable">
+                        <tr><td colspan="6" class="muted">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>EventEase · Academic Mini Project · Node.js + Express + SQLite</footer>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
